@@ -19,7 +19,7 @@ source.dir = .
 version = 1.0
 
 # (list) Application requirements
-requirements = python3,kivy
+requirements = python3==3.10.12,kivy==2.3.0
 
 # (str) Supported orientations
 orientation = portrait
@@ -31,13 +31,13 @@ fullscreen = 0
 android.permissions = INTERNET
 
 # (int) Target Android API
-android.api = 33
+android.api = 31
 
 # (int) Minimum API your APK will support
 android.minapi = 21
 
 # (int) Android SDK version to use
-android.sdk = 33
+android.sdk = 31
 
 # (str) Android NDK version to use
 android.ndk = 23b
