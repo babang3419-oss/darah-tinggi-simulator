@@ -25,6 +25,7 @@ jobs:
           ~/.buildozer
           .buildozer
         key: ${{ runner.os }}-buildozer-${{ hashFiles('buildozer.spec') }}-v2
+
     - name: Install Dependencies
       run: |
         sudo apt-get update
@@ -42,4 +43,3 @@ jobs:
       with:
         name: darah-tinggi-simulator-apk
         path: bin/*.apk
-        
