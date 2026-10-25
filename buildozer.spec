@@ -1,49 +1,21 @@
 [app]
-
-# (str) Title of your application
 title = Darah Tinggi Simulator
-
-# (str) Package name
-package.name = darahtinggi
-
-# (str) Package domain (needed for android packaging)
-package.domain = org.emosi
-
-# (list) Source files to include (let it empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas
-
-# (list) Source directory
+package.name = darahtinggisimulator
+package.domain = org.babang
 source.dir = .
+source.include_exts = py,png,jpg,kv,atlas
+version = 0.1
+requirements = python3,kivy
 
-# (str) Application versioning
-version = 1.0
-
-# (list) Application requirements
-requirements = python3==3.10.12,kivy==2.3.0
-
-# (str) Supported orientations
 orientation = portrait
-
-# (bool) Indicate if the application should be fullscreen or not
 fullscreen = 0
 
-# (list) Permissions
-android.permissions = INTERNET
-
-# (int) Target Android API
 android.api = 33
-
-# (int) Minimum API your APK will support
 android.minapi = 21
-
-# (int) Android SDK version to use
 android.sdk = 33
-
-# (str) Android NDK version to use
 android.ndk = 25b
+android.private_storage = 1
 
-# (bool) Automatically accept Android SDK license agreement
-android.accept_sdk_license = True
-
-# (bool) Use --private data storage (True) or --public storage (False)
-android.private_storage = True
+[buildozer]
+log_level = 2
+warn_on_root = 1
