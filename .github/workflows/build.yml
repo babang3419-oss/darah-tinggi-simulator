@@ -45,6 +45,8 @@ jobs:
 
     - name: Build with Buildozer
       run: |
+        export CFLAGS="-Wno-error=format-security"
+        export CXXFLAGS="-Wno-error=format-security"
         buildozer -v android debug
 
     - name: Upload APK Artifact
@@ -52,3 +54,4 @@ jobs:
       with:
         name: darah-tinggi-apk
         path: bin/*.apk
+        
