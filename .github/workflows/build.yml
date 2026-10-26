@@ -1,47 +1,38 @@
-name: Build APK
+name: Build Android APK
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout Code
+    - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Python
+    - name: Set up Python 3.11
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: '3.11'
 
-    - name: Install System Dependencies
+    - name: Install system dependencies
       run: |
-        sudo dpkg --add-architecture i386
-        sudo apt-get update
-        sudo apt-get install -y \
-          build-essential git ffmpeg libsdl2-dev libsdl2-image-dev \
-          libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev \
-          libavformat-dev libavcodec-dev zlib1g-dev libffi-dev libssl-dev \
-          openjdk-11-jdk unzip zip autoconf libtool pkg-config \
-          libncurses5:i386 libstdc++6:i386 libreadline-dev libsqlite3-dev
+        sudo apt update
+        sudo apt install -y build-essential ccache git libffi-dev libssl-dev libltdl-dev zlib1g-dev unzip openjdk-17-jdk
 
-    - name: Install Buildozer & Cython
+    - name: Install Python dependencies
       run: |
-        pip install --upgrade pip
-        pip install "cython<3" buildozer
+        pip install --upgrade pip setuptools==65.5.0 wheel
+        pip install --prefer-binary "cython<3" buildozer
 
     - name: Build APK with Buildozer
       run: |
-        buildozer -v android debug
+        yes | buildozer -v android debug
 
-    - name: Upload APK Artifact
+    - name: Upload APK artifact
       uses: actions/upload-artifact@v4
       with:
-        name: darah-tinggi-simulator-apk
+        name: game-apk
         path: bin/*.apk
-        
